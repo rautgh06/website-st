@@ -485,7 +485,8 @@
 .contact-input { transition: border-color .2s ease, box-shadow .2s ease; }
 .contact-input:focus { outline: none; border-color: hsl(var(--primary)); box-shadow: 0 0 0 4px hsl(var(--primary) / .13); }
 .career-frame { border: 1px solid hsl(var(--primary) / .28); background: hsl(var(--card)); }
-.career-form { display: block; border: 0; }
+.career-form-surface { background: linear-gradient(135deg, hsl(var(--primary) / .12), hsl(var(--secondary) / .16)); }
+.career-form { display: block; border: 0; border-radius: .9rem; }
 @media (max-width: 767px) {
   .hero-display { font-size: clamp(3.2rem, 16vw, 5.7rem); line-height: .91; }
 }
