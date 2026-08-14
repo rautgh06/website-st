@@ -159,16 +159,16 @@ function About() {
 
 function Careers() {
   return <section id="careers" className="scroll-mt-20 border-b border-[hsl(var(--foreground)/.1)] bg-[hsl(var(--secondary)/.28)]">
-    <div className="mx-auto max-w-[1240px] px-5 py-20 sm:px-8 lg:py-24">
-      <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:items-start">
+    <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:py-20">
+      <div className="grid gap-6 lg:grid-cols-[.6fr_1.4fr] lg:items-start">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} className="lg:sticky lg:top-32">
           <p className="eyebrow text-[hsl(var(--accent-foreground))]">Jobs &amp; Careers at SysProTechnologies</p><h2 className="mt-5 max-w-[440px] font-display text-5xl leading-[.95] tracking-[-.06em] sm:text-6xl">Build what<br /><span className="text-[hsl(var(--accent-foreground))]">matters.</span></h2><p className="mt-7 max-w-[390px] text-base leading-7 text-[hsl(var(--muted-foreground))]">Join people who care about making technology useful, reliable, and a little easier to live with.</p><div className="mt-7 flex flex-col gap-3 text-sm font-semibold"><span className="flex items-center gap-3"><Check size={16} className="text-[hsl(var(--accent-foreground))]" /> A team that shares context</span><span className="flex items-center gap-3"><Check size={16} className="text-[hsl(var(--accent-foreground))]" /> Work that reaches real people</span><span className="flex items-center gap-3"><Check size={16} className="text-[hsl(var(--accent-foreground))]" /> Room to keep getting better</span></div>
         </motion.div>
-         <div className="career-frame w-full max-w-[820px] justify-self-end overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_hsl(var(--foreground)/.14)]">
+         <div className="career-frame w-full max-w-[900px] justify-self-end overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_hsl(var(--foreground)/.14)]">
            <div className="h-1 bg-[linear-gradient(90deg,hsl(var(--primary)),hsl(var(--secondary)),hsl(var(--accent)))]" />
            <div className="flex flex-wrap items-center justify-between gap-3 bg-[hsl(var(--foreground))] px-5 py-4 text-[hsl(var(--background))]"><div className="flex items-center gap-2 text-sm font-bold"><BriefcaseBusiness size={17} className="text-[hsl(var(--primary))]" /> Open application</div><div className="flex items-center gap-3"><span className="eyebrow text-[hsl(var(--background)/.58)]">Secure form</span><a href="https://forms.gle/fFe17audQnzGgcyb8" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs font-bold text-[hsl(var(--primary))] transition-opacity hover:opacity-70" data-testid="link-open-full-application">Open full form <ArrowUpRight size={13} /></a></div></div>
            <div className="career-form-surface p-2 sm:p-3">
-             <iframe title="SysProTechnologies jobs and careers application form" src="https://docs.google.com/forms/d/e/1FAIpQLSeeyDO3MN8V5LgC9Rf8PpYs8zgEjIp6X9pYXM9zg9P-SpDA3Q/viewform?embedded=true" allowFullScreen loading="lazy" className="career-form h-[520px] w-full bg-transparent sm:h-[560px]" data-testid="iframe-careers-form" />
+             <iframe title="SysProTechnologies jobs and careers application form" src="https://docs.google.com/forms/d/e/1FAIpQLSeeyDO3MN8V5LgC9Rf8PpYs8zgEjIp6X9pYXM9zg9P-SpDA3Q/viewform?embedded=true" allowFullScreen loading="lazy" className="career-form h-[450px] w-full bg-transparent sm:h-[500px]" data-testid="iframe-careers-form" />
            </div>
         </div>
       </div>
