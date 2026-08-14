@@ -29,6 +29,13 @@ if (!basePath) {
 
 export default defineConfig({
   base: basePath,
+  define: {
+    'process.env': {} 
+  },
+  build: {
+    outDir: path.resolve(import.meta.dirname, 'dist/public'),
+    emptyOutDir: true,
+  },
   plugins: [
     react(),
     tailwindcss(),
