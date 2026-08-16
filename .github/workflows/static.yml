@@ -2,8 +2,8 @@ name: Deploy Vite App
 
 on:
   push:
-    branches: ["main"]
-    
+    branches: ["main"] # Change to master if your default branch is named master
+
 permissions:
   contents: read
   pages: write
@@ -26,19 +26,17 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # Standard version that fully supports catalogs
+          version: 9
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
-          cache-dependency-path: './artifacts/syspro-technologies/pnpm-lock.yaml'
+          node-version: 22 # Upgraded to modern Node 22 to clear deprecation errors
 
       - name: Install Dependencies & Build
         run: |
           cd artifacts/syspro-technologies
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm run build
 
       - name: Upload Production Artifacts
