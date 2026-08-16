@@ -3,7 +3,7 @@ name: Deploy Vite App
 on:
   push:
     branches: ["main"]
-
+    
 permissions:
   contents: read
   pages: write
@@ -23,18 +23,23 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # Standard version that fully supports catalogs
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-node-version: 20
-          cache: 'npm'
-          cache-dependency-path: './artifacts/syspro-technologies/package.json'
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: './artifacts/syspro-technologies/pnpm-lock.yaml'
 
       - name: Install Dependencies & Build
         run: |
           cd artifacts/syspro-technologies
-          npm install
-          npm run build
+          pnpm install
+          pnpm run build
 
       - name: Upload Production Artifacts
         uses: actions/upload-pages-artifact@v3
