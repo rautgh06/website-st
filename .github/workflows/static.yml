@@ -1,11 +1,8 @@
-name: Deploy Vite Site to Pages
+name: Deploy Vite App
 
 on:
   push:
-    branches: ["main"] # Change to "master" if your default branch is master
-
-env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -14,7 +11,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -23,38 +20,26 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
-          cache-dependency-path: './artifacts/syspro-technologies/package.json' 
+          node-node-version: 20
+          cache: 'npm'
+          cache-dependency-path: './artifacts/syspro-technologies/package.json'
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-        working-directory: './artifacts/syspro-technologies'
-
-      - name: Build site
-        env:
-          BASE_PATH: './'
-          PORT: 3000
+      - name: Install Dependencies & Build
         run: |
-          pnpm run build
-          echo "sysprotechnologies.org" > ./dist/public/CNAME
-        working-directory: './artifacts/syspro-technologies'
+          cd artifacts/syspro-technologies
+          npm install
+          npm run build
 
-      - name: Upload artifact
+      - name: Upload Production Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './artifacts/syspro-technologies/dist/public' 
+          path: './artifacts/syspro-technologies/dist/public'
 
       - name: Deploy to GitHub Pages
         id: deployment
