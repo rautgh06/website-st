@@ -1,48 +1,42 @@
-name: Deploy Vite App
+name: Deploy Website Source
 
 on:
   push:
-    branches: ["main"] # Change to master if your default branch is named master
+    branches: ["main"]
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  build-and-deploy:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: artifacts/syspro-technologies
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Set up Node.js
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Upgraded to modern Node 22 to clear deprecation errors
+          node-version: 20
 
-      - name: Install Dependencies & Build
-        run: |
-          cd artifacts/syspro-technologies
-          pnpm install --no-frozen-lockfile
-          pnpm run build
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Upload Production Artifacts
+      - name: Build Website
+        run: npm run build
+
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './artifacts/syspro-technologies/dist/public'
+          path: './artifacts/syspro-technologies/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
