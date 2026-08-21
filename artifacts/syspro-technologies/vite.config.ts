@@ -5,8 +5,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   // Hardcode relative paths so asset delivery works flawlessly on GitHub Pages
-  //base: './',
-  base: '/website-st/',
+  base: './',
+  //base: '/website-st/',
   define: {
     'process.env': {} 
   },
