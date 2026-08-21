@@ -8,6 +8,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
+
 const queryClient = new QueryClient();
 const services = [
   { number: '01', title: 'Network Solutions', icon: Network, description: 'Structured, resilient networks that keep public offices, teams, and communities connected with confidence.', tags: ['LAN / WAN design', 'Secure connectivity'] },
