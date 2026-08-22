@@ -207,7 +207,22 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 }
 
 function App() {
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base=""><RoutedErrorBoundary><Router /></RoutedErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+    // Dynamically switch the routing base path depending on the active URL location
+  const currentUrlPath = window.location.pathname;
+  const dynamicBase = currentUrlPath.includes('/website-st') ? '/website-st' : '';
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <WouterRouter base={dynamicBase}>
+          <RoutedErrorBoundary>
+            <Router />
+          </RoutedErrorBoundary>
+        </WouterRouter>
+        <Toaster />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App;
